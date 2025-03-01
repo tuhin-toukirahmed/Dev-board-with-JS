@@ -1,4 +1,19 @@
-// Get all buttons with id "complete-btn"
+let completedCount = 0;
+const completeBtns = document.querySelectorAll("#complete-btn");
+const totalTasks = completeBtns.length;
+
+function checkAllCompleted() {
+  let allDisabled = true;
+  completeBtns.forEach((btn) => {
+    if (!btn.disabled) {
+      allDisabled = false;
+    }
+  });
+  if (allDisabled) {
+    alert("🎉 Congratulations! You have completed all tasks!");
+  }
+}
+
 const completeBtn = document.querySelectorAll("#complete-btn");
 completeBtn.forEach((btn) => {
   btn.addEventListener("click", function (event) {
@@ -24,11 +39,12 @@ completeBtn.forEach((btn) => {
       hour12: true,
     };
     const formattedTime = now.toLocaleTimeString("en-GB", options);
-    newSection.classList.add("bg-slate-100", "p-2", "rounded");
+    newSection.classList.add("bg-slate-100", "p-2", "m-2", "rounded");
 
     newSection.innerHTML = `<p>You have completed
-     <strong>${taskTitle}</strong> at <span class="text-blue-600">${formattedTime}</span></p>`;
+    <strong>${taskTitle}</strong> at <span class="text-blue-600">${formattedTime}</span></p>`;
     sidebar.appendChild(newSection);
+    checkAllCompleted();
   });
 });
 
@@ -46,7 +62,6 @@ clearHistoryBtn.addEventListener("click", function () {
 
 function updateCurrentDate() {
   const dateElement = document.querySelector("#date");
-
   if (dateElement) {
     const today = new Date();
 
@@ -55,23 +70,7 @@ function updateCurrentDate() {
       day: "2-digit",
       year: "numeric",
     });
-
     dateElement.textContent = formattedDate;
   }
 }
 updateCurrentDate();
-
-let completedCount = 0;
-const totalTasks = completeBtn.length;
-
-completeBtn.forEach((btn) => {
-  btn.addEventListener("click", function () {
-    btn.disabled = true;
-    completedCount++;
-    if (completedCount === totalTasks) {
-      setTimeout(() => {
-        alert("🎉 Congratulations! You have completed all tasks!");
-      });
-    }
-  });
-});
