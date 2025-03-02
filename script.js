@@ -1,24 +1,9 @@
-let completedCount = 0;
-const completeBtns = document.querySelectorAll("#complete-btn");
-const totalTasks = completeBtns.length;
-
-function checkAllCompleted() {
-  let allDisabled = true;
-  completeBtns.forEach((btn) => {
-    if (!btn.disabled) {
-      allDisabled = false;
-    }
-  });
-  if (allDisabled) {
-    alert("🎉 Congratulations! You have completed all tasks!");
-  }
-}
-
 const completeBtn = document.querySelectorAll("#complete-btn");
 completeBtn.forEach((btn) => {
   btn.addEventListener("click", function (event) {
     const isConfirmed = confirm("Board Update successfully");
     if (!isConfirmed) return;
+    btn.disabled = true;
     const completedTask = document.getElementById("completed-task");
     const taskNumber = parseInt(completedTask.textContent);
     const countCompletedTask = document.getElementById("count-completed-task");
@@ -44,7 +29,10 @@ completeBtn.forEach((btn) => {
     newSection.innerHTML = `<p>You have completed
     <strong>${taskTitle}</strong> at <span class="text-blue-600">${formattedTime}</span></p>`;
     sidebar.appendChild(newSection);
-    checkAllCompleted();
+
+    if (completedTask.textContent === "0") {
+      alert("🎉 Congratulations! You have completed all tasks!");
+    }
   });
 });
 
@@ -66,6 +54,7 @@ function updateCurrentDate() {
     const today = new Date();
 
     const formattedDate = today.toLocaleDateString("en-GB", {
+      day: "3-digit",
       month: "long",
       day: "2-digit",
       year: "numeric",
@@ -74,3 +63,25 @@ function updateCurrentDate() {
   }
 }
 updateCurrentDate();
+
+const themeBtn = document.getElementById("theme-btn");
+const theme = [
+  { background: "#1e90ff" },
+  { background: "#2ecc71" },
+  { background: "#ffbe0b" },
+  { background: "#ca8a04" },
+  { background: "#8e44ad" },
+  { background: "#ff007f" },
+  { background: "#00bcd4" },
+  { background: "#ff4500" },
+  { background: "#0d1117" },
+];
+let currentThemeIndex = 0;
+themeBtn.addEventListener("click", function () {
+  document.body.style.backgroundColor = theme[currentThemeIndex].background;
+  currentThemeIndex = (currentThemeIndex + 1) % theme.length;
+});
+
+document.getElementById("qna-btn").addEventListener("click", function () {
+  window.location.href = "./question.html";
+});

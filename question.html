@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .qna {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <title>QNA Board</title>
+</head>
+
+<body class="bg-[#0d1117] h-screen p-5 ">
+    <nav class="flex justify-between items-center w-10/12 mx-auto bg-blue-100 p-3 rounded ">
+        <div class="nav-logo flex items-center gap-2">
+            <img src="assets/logo.png" class="w-10" alt="">
+            <h1 class="text-2xl">Dev<span class="font-bold ">Board</span></h1>
+        </div>
+        <button id="home-btn" href="./index.html" target="_blank" class="btn bg-blue-600">
+            Homepage
+        </button>
+    </nav>
+    <h1 class="text-4xl font-bold text-center mt-4 text-white">QNA</h1>
+    <section class="w-10/12 mx-auto mt-5 flex
+    flex-col gap-5">
+
+
+        <div class="question1 qna mx-auto">
+            <h1>
+                Question-1: What are the different ways to select an element in the DOM?
+            </h1>
+            <hr class="my-3 border-dashed">
+            <p>Answer: There are many ways to select an element in the DOM we can use getElementById method,
+                getElementsByClassName method, getElementsByTagName method,querySelector method,querySelectorAll method.
+            </p>
+        </div>
+        <div class="question2 qna mx-auto">
+            <h1>
+                Question-2: What is the difference between innerHTML, innerText, and textContent ?
+            </h1>
+            <hr class="my-3 border-dashed">
+            <p>Answer: The difference between innerHTML, innerText, and textContent is that innerHTML
+                returns the HTML code of the element, innerText returns the text content of the element, and textContent
+                returns the text content of the element without any HTML tags.
+            </p>
+        </div>
+        <div class="question3 qna mx-auto">
+            <h1>
+                Question-3: What is event delegation in the DOM?
+            </h1>
+            <hr class="my-3 border-dashed">
+            <p>Answer: Event delegation in the DOM is a technique where we attach a single event listener to a parent
+                element, and then handle events for child elements using event delegation.
+            </p>
+        </div>
+        <div class="question4 qna mx-auto">
+            <h1>
+                Question-4: What is event bubbling in the DOM?
+            </h1>
+            <hr class="my-3 border-dashed">
+            <p>Answer: Event bubbling in the DOM is a concept where events are propagated from child elements to parent
+                elements, and then to the document element.
+            </p>
+        </div>
+        <div class="question5 qna mx-auto">
+            <h1>
+                Question-5: How do you create, add, and remove elements using JavaScript?
+
+            </h1>
+            <hr class="my-3 border-dashed">
+            <p>Answer: To create, add, and remove elements using JavaScript, we can use the document.createElement
+                method, appendChild method, and removeChild method.
+            </p>
+        </div>
+
+    </section>
+
+    <script>
+        document.getElementById("home-btn").addEventListener("click", function () {
+            window.location.href = "./index.html";
+        });
+    </script>
+</body>
+
+</html>
